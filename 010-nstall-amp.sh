@@ -10,10 +10,10 @@ echo ""
 LAMPdir=conf-ini
 
 # A nice lightweightbrowser to start with
-sudo pacman -S falkon
+sudo pacman -S falkon  --noconfirm --needed
 
 # Apache
-sudo pacman -S apache
+sudo pacman -S apache  --noconfirm --needed
 sudo cp $LAMPdir/httpd.conf /etc/httpd/conf/httpd.conf
 sudo cp $LAMPdir/index.html /srv/http/index.html
 
@@ -23,7 +23,7 @@ sudo systemctl status httpd
 sudo systemctl stop httpd
 
 # MySQL
-sudo pacman -S mysql
+sudo pacman -S mysql  --noconfirm --needed
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 # Test
@@ -36,11 +36,11 @@ sudo mysql_secure_installation
 sudo systemctl stop mariadb
 
 # PHP
-sudo pacman -S php php-apache
+sudo pacman -S php php-apache  --noconfirm --needed
 sudo cp $LAMPdir/test.php /srv/http/test.php
 
 # phpMyAdmin
-sudo pacman -S phpmyadmin
+sudo pacman -S phpmyadmin  --noconfirm --needed
 sudo cp $LAMPdir/phpmyadmin.conf /etc/httpd/conf/extra/phpmyadmin.conf
 
 # Setting up two sites
