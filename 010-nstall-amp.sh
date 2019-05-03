@@ -30,8 +30,8 @@ sudo systemctl status mariadb
 sudo mysql_secure_installation
 sudo systemctl stop mariadb
 
-# PHP, PHP-Aoachee, phpMyAdmin
-sudo pacman -S php php-apache phpmyadmin --noconfirm --needed
+# PHP, PHP-Aoachee, phpMyAdminin, php-gd, xdebug
+sudo pacman -S php php-apache phpmyadmin php-gd xdebug --noconfirm --needed
 
 sudo cp $LAMPdir/php.ini /etc/php/php.ini
 sudo cp $LAMPdir/phpmyadmin.conf /etc/httpd/conf/extra/phpmyadmin.conf
@@ -44,3 +44,4 @@ sudo systemctl start httpd mariadb
 sudo systemctl status httpd mariadb
 
 echo "###################   Done                ######################"
+

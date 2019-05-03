@@ -5,4 +5,6 @@
 ### Based on an Arch Linux system ###
 
 ```
+git clone https://github.com/Tahooft/ampd.git
+
 ```
