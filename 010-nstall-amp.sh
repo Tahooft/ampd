@@ -17,11 +17,6 @@ sudo cp $LAMPdir/httpd-vhosts.conf /etc/httpd/conf/extra/httpd-vhosts.conf
 sudo cp -r $LAMPdir/http/* /srv/http/
 sudo cp $LAMPdir/hosts /etc/hosts
 
-# Test
-sudo systemctl start httpd
-sudo systemctl status httpd
-sudo systemctl stop httpd
-
 # MySQL
 sudo pacman -S mysql  --noconfirm --needed
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -42,7 +37,7 @@ sudo cp $LAMPdir/php.ini /etc/php/php.ini
 sudo cp $LAMPdir/phpmyadmin.conf /etc/httpd/conf/extra/phpmyadmin.conf
 
 sudo chmod -R o+r /srv/http/
-#sudo chown -R  $USER:users /srv/http/
+sudo chown -R  $USER:users /srv/http/
 
 # Test
 sudo systemctl start httpd mariadb
