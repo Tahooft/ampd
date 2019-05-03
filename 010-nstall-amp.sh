@@ -9,13 +9,13 @@ echo ""
 # The pre-configured scrips
 LAMPdir=conf-ini
 
-# A nice lightweightbrowser to start with
-sudo pacman -S falkon  --noconfirm --needed
-
 # Apache
 sudo pacman -S apache  --noconfirm --needed
+
 sudo cp $LAMPdir/httpd.conf /etc/httpd/conf/httpd.conf
-sudo cp $LAMPdir/index.html /srv/http/index.html
+sudo cp $LAMPdir/httpd-vhosts.conf /etc/httpd/conf/extra/httpd-vhosts.conf
+sudo cp -r $LAMPdir/http/* /srv/http/
+sudo cp $LAMPdir/hosts /etc/hosts
 
 # Test
 sudo systemctl start httpd
@@ -35,26 +35,17 @@ sudo systemctl status mariadb
 sudo mysql_secure_installation
 sudo systemctl stop mariadb
 
-# PHP
-sudo pacman -S php php-apache  --noconfirm --needed
-sudo cp $LAMPdir/test.php /srv/http/test.php
+# PHP, PHP-Aoachee, phpMyAdmin
+sudo pacman -S php php-apache phpmyadmin --noconfirm --needed
 
-# phpMyAdmin
-sudo pacman -S phpmyadmin  --noconfirm --needed
+sudo cp $LAMPdir/php.ini /etc/php/php.ini
 sudo cp $LAMPdir/phpmyadmin.conf /etc/httpd/conf/extra/phpmyadmin.conf
 
-# Setting up two sites
-sudo mkdir /srv/http/bouwsite1.ont
-sudo mkdir /srv/http/bouwsite1.ont/web
-sudo cp $LAMPdir/index.html /srv/http/bouwsite1.ont/web
-sudo cp $LAMPdir/test.php /srv/http/bouwsite1.ont/web
-sudo cp -r /srv/http/bouwsite1.ont/ /srv/http/bouwsite2.ont/
-
-# Our virtualhosts sign in
-sudo cp $LAMPdir/hosts /etc/hosts
-
 sudo chmod -R o+r /srv/http/
-sudo chmod -R o+r /srv/http/
+#sudo chown -R  $USER:users /srv/http/
 
-sudo systemctl start httpd
-sudo systemctl status httpd
+# Test
+sudo systemctl start httpd mariadb
+sudo systemctl status httpd mariadb
+
+echo "###################   Done                ######################"
