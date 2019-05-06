@@ -1,18 +1,12 @@
 filezilla
-mariadb
-php-apache
-php-gd
-phpmyadmin
 xdebug
+
+
+
 (AUR)
 drupalconsole
 drush
 php-box
 php-codesniffer
 php-codesniffer-drupal-git
-
-(Niet in pacman lijst - wel installed)
-composer
-apache
-php
 
